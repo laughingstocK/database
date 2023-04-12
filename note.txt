@@ -1,0 +1,62 @@
+adcw263
+
+# is foreign key
+ตัวเอียง foreign key
+_ is primary key
+สี่เหลี่ยมคือ table
+เพชร คือ relatioin
+
+Select * 
+from Room
+where price < 40.00 and
+type in ('N', 'D')
+order by desc
+
+select *
+FROM Booking
+WHERE dateTo IS null
+
+SELECT hotelNo, count(roomNo) as roomCount
+FROM Room
+GROUP BY hotelNo
+
+
+CREATE VIEW GuestFromUK
+     AS
+           SELECT *
+           FROM Guest
+           WHERE guestAddress like “%United Kingdom%” OR
+                 guestAddress like “%UK%”
+
+
+CREATE TABLE Client of ClientType
+(
+    ClCode PRIMARY KEY,
+    SCOPE FOR (Account) IS BankAcc
+);
+
+CREATE TABLE Client OF ClientType
+(
+  PRIMARY KEY (ClCode),
+  Account SCOPE BankAcc
+);
+
+
+These terms refer to different approaches to replicating data in distributed systems.
+
+Eager, primary copy: In this approach, all updates to the data are made at a single primary copy, and the changes are immediately propagated to all other replicas. This ensures that all replicas have the same data at all times, but it can also result in higher network traffic and latency.
+
+Eager, update anywhere: Here, updates can be made at any replica, and the changes are propagated immediately to all other replicas. This approach can reduce network traffic and latency, but it requires more coordination to ensure that all replicas are in sync.
+
+Lazy, primary copy: In this approach, updates are made at a single primary copy, but changes are only propagated to other replicas when necessary (i.e., when a replica requests an update or when the primary copy detects a failure). This approach can reduce network traffic and latency, but it can also result in replicas being out of sync for some period of time.
+
+Lazy, update anywhere: This approach allows updates to be made at any replica, but changes are only propagated to other replicas when necessary. This approach can reduce network traffic and latency, but it requires more coordination to ensure that all replicas are eventually updated.
+
+Overall, the choice of replication approach depends on the specific requirements of the distributed system, such as the desired level of consistency, availability, and performance.
+
+
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that ensure database transactions are processed reliably.
+Atomicity: Atomicity ensures that all operations within a transaction are treated as a single unit of work, which either succeeds completely or fails completely. If a transaction fails, any changes made to the database must be rolled back to the state it was in before the transaction started.
+Consistency: Consistency ensures that a transaction brings the database from one valid state to another. It ensures that data written to the database follows predefined rules, and that the data remains in a valid state after each transaction.
+Isolation: Isolation ensures that concurrent transactions do not interfere with each other. Each transaction must be isolated from other transactions so that they can operate on the same data without causing conflicts or inconsistencies.
+Durability: Durability ensures that once a transaction is committed, it will persist even in the event of a system failure or power outage. The changes made to the database must be stored and remain available, even if the system crashes or restarts.
